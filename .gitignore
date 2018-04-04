@@ -1,0 +1,7 @@
+/tests_output
+nightwatch.props.js
+selenium-debug.log
+/nightwatch/testing-resources
+*CHROME*
+settings.json
+/.vscode
