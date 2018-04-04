@@ -10,6 +10,6 @@ module.exports = {
     after: browser => {
     //    browser.end()
     },
-    'Signup (valid inputs)': browser => functions.signUpValid(browser),
+    'DCS-8: Signup (valid inputs)': browser => functions.signUpValid(browser),
     
 }

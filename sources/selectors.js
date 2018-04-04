@@ -6,5 +6,6 @@ module.exports = {
         'emailInput': 'input[type="email"]',
         'passwordInput': 'input[type="password"]',
         'signUpButton': 'button[class="button__ButtonContent-eBlwbH ccLrVt"]',
+        'errorBox': 'span[class="text__Text-iEUpza hvHzTI"]',
     },
 }
