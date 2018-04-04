@@ -5,12 +5,11 @@ const data = require('../sources/data')
 module.exports = {
 
     beforeEach: browser => {
-        browser.url('https://www.surveymonkey.com')
+        browser.url('https://jane.com/')
     },
-
     after: browser => {
         browser.end()
     },
-
+    
     
 }
