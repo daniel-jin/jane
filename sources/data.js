@@ -1,7 +1,7 @@
 module.exports = {
     'signUp': {
         'fullName': "Dan Jin",
-        'email': "daniel.h.jin2@gmail.com",
+        'email': "daniel.h.jin5@gmail.com",
         'password': "11111111"
     }
 }
