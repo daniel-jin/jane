@@ -15,8 +15,8 @@ let setInputValue = (browser, selector, data) => {
 }
 
 /**
- * 
- * @param {*} browser 
+ * Sign up using a valid name, email, and password.
+ * @param {object} browser the Nightwatch object
  */
 let signUpValid = (browser) => {
     browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
@@ -37,6 +37,24 @@ let signUpValid = (browser) => {
         .expect.element(selectors["login/signup"].homepageLogin).text.to.equal("Dan")
 }
 
+let signUpInvalid = (browser) => {
+    browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
+    browser
+        .click(selectors["login/signup"].homepageLogin)
+        .waitForElementVisible(selectors["login/signup"].signupLink, 3000)
+    browser
+        .click(selectors["login/signup"].signupLink)
+        .waitForElementVisible(selectors["login/signup"].signUpButton, 3000)
+    setInputValue(browser, selectors["login/signup"].nameInput, "")
+    setInputValue(browser, selectors["login/signup"].emailInput, "")
+    setInputValue(browser, selectors["login/signup"].passwordInput, "")
+    browser
+        .click(selectors["login/signup"].signUpButton)
+        .waitForElementVisible(selectors["login/signup"].errorBox, 3000)
+    browser.expect.element(selectors["login/signup"].errorBox).text.to.equal("The Full Name field is required.")
+}
+
 module.exports = {
-    signUpValid: signUpValid
+    signUpValid: signUpValid,
+    signUpInvalid: signUpInvalid
 }
