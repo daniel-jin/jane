@@ -1,10 +1,11 @@
 const selectors = require('../selectors')
 const data = require('../data')
 
+
 /**
  * Clears an input field, sets an assigned value, and verifies the value.
- * @param {object} browser the Nightwatch testing object
- * @param {string} selector the selectors on the page
+ * @param {object} page the homepage
+ * @param {string} element the element to input value into
  * @param {string} data input data for the field
  */
 let setInputValue = (page, element, data) => {
@@ -38,19 +39,20 @@ let loginInvalid = (browser) => {
  * @param {object} browser the Nightwatch object
  */
 let loginValid = (browser) => {
-    browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
-    browser
-        .click(selectors["login/signup"].homepageLogin)
-
-    browser.waitForElementVisible(selectors["login/signup"].signupLink, 3000)
-    setInputValue(browser, selectors["login/signup"].emailInput, data.signUp.email)
-    setInputValue(browser, selectors["login/signup"].passwordInput, data.signUp.password)
-    browser
-        .click(selectors["login/signup"].loginButton)
-        .waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
+    let homePage = browser.page.homePage();
+    homePage.navigate()
+    homePage.waitForElementVisible('@homepageLogin', 3000)
+    homePage
+        .click('@homepageLogin')
+        .waitForElementVisible('@signupLink', 3000)
+    setInputValue(homePage, '@emailInput', data.signUp.email)
+    setInputValue(homePage, '@passwordInput', data.signUp.password)
+    homePage
+        .click('@loginButton')
+        .waitForElementVisible('@homepageLogin', 3000)
     browser.pause(3000)
-    browser
-        .expect.element(selectors["login/signup"].homepageLogin).text.to.equal("Dan")
+    homePage
+        .expect.element('@homepageLogin').text.to.equal("Dan")
 }
 
 /**
