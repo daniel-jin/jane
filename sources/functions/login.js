@@ -1,6 +1,4 @@
-const selectors = require('../selectors')
 const data = require('../data')
-
 
 /**
  * Clears an input field, sets an assigned value, and verifies the value.
@@ -60,14 +58,15 @@ let loginValid = (browser) => {
  * @param {object} browser the Nightwatch object
  */
 let logOut = browser => {
-    browser
-        .click(selectors["login/signup"].homepageLogin)
-        .waitForElementVisible(selectors["login/signup"].logOutButton, 2000)
-    browser
-        .click(selectors["login/signup"].logOutButton)
-        .waitForElementVisible(selectors["login/signup"].homepageLogin, 2000)
+    let homePage = browser.page.homePage();
+    homePage
+        .click('@homepageLogin')
+        .waitForElementVisible('@logOutButton', 2000)
+    homePage
+        .click('@logOutButton')
+        .waitForElementVisible('@homepageLogin', 2000)
     browser.pause(2000)
-    browser.expect.element(selectors["login/signup"].homepageLogin).text.to.equal("Login")
+    homePage.expect.element('@homepageLogin').text.to.equal("Login")
 }
 
 module.exports = {
