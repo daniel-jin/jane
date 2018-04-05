@@ -8,5 +8,6 @@ module.exports = {
         'signUpButton': 'button[class="button__ButtonContent-eBlwbH ccLrVt"]',
         'errorBox': 'span[class="text__Text-iEUpza hvHzTI"]',
         'loginButton': 'button[class="button__ButtonContent-eBlwbH ccLrVt"]',
+        'loginError': 'span[class="text__Text-iEUpza hvHzTI"]',
     },
 }

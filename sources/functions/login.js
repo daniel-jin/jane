@@ -14,6 +14,10 @@ let setInputValue = (browser, selector, data) => {
         .verify.value(selector, data)
 }
 
+/**
+ * Log in with a valid email and password.
+ * @param {object} browser the Nightwatch object
+ */
 let loginValid = (browser) => {
     browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
     browser
@@ -29,6 +33,25 @@ let loginValid = (browser) => {
         .expect.element(selectors["login/signup"].homepageLogin).text.to.equal("Dan")
 }
 
+/**
+ * Login with invalid inputs.
+ * @param {object} browser the Nightwatch object 
+ */
+let loginInvalid = (browser) => {
+    browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
+    browser
+        .click(selectors["login/signup"].homepageLogin)
+        .waitForElementVisible(selectors["login/signup"].loginButton, 3000)
+    setInputValue(browser, selectors["login/signup"].emailInput, "")
+    setInputValue(browser, selectors["login/signup"].passwordInput, "")
+    browser
+        .click(selectors["login/signup"].loginButton)
+        .waitForElementVisible(selectors["login/signup"].loginError, 3000)
+    browser.expect.element(selectors["login/signup"].loginError).text.to.equal("The Email Address field is required.")
+
+}
+
 module.exports = {
-    loginValid: loginValid
+    loginValid: loginValid,
+    loginInvalid: loginInvalid
 }
