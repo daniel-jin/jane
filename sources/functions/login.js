@@ -48,10 +48,25 @@ let loginInvalid = (browser) => {
         .click(selectors["login/signup"].loginButton)
         .waitForElementVisible(selectors["login/signup"].loginError, 3000)
     browser.expect.element(selectors["login/signup"].loginError).text.to.equal("The Email Address field is required.")
+}
 
+/**
+ * Log out of an account.
+ * @param {object} browser the Nightwatch object
+ */
+let logOut = browser => {
+    loginValid(browser)
+    browser
+        .click(selectors["login/signup"].homepageLogin)
+        .waitForElementVisible(selectors["login/signup"].logOutButton, 2000)
+    browser
+        .click(selectors["login/signup"].logOutButton)
+        .waitForElementVisible(selectors["login/signup"].homepageLogin, 2000)
+    browser.expect.element(selectors["login/signup"].homepageLogin).text.to.equal("Login")
 }
 
 module.exports = {
     loginValid: loginValid,
-    loginInvalid: loginInvalid
+    loginInvalid: loginInvalid,
+    logOut: logOut,
 }

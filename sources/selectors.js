@@ -9,5 +9,6 @@ module.exports = {
         'errorBox': 'span[class="text__Text-iEUpza hvHzTI"]',
         'loginButton': 'button[class="button__ButtonContent-eBlwbH ccLrVt"]',
         'loginError': 'span[class="text__Text-iEUpza hvHzTI"]',
+        'logOutButton': 'span[data-testid="accountnav-log-out"]',
     },
 }
