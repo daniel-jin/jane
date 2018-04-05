@@ -2,6 +2,8 @@ const functions = require('../sources/functions/signup')
 
 module.exports = {
     beforeEach: browser => {
+        let homePage = browser.page.homePage();
+        homePage.navigate()
     },
     after: browser => {
         browser.end()

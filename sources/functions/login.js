@@ -19,7 +19,6 @@ let setInputValue = (page, element, data) => {
  */
 let loginInvalid = (browser) => {
     let homePage = browser.page.homePage();
-    homePage.navigate()
     homePage.waitForElementVisible('@homepageLogin', 3000)
     homePage
         .click('@homepageLogin')
@@ -38,7 +37,6 @@ let loginInvalid = (browser) => {
  */
 let loginValid = (browser) => {
     let homePage = browser.page.homePage();
-    homePage.navigate()
     homePage.waitForElementVisible('@homepageLogin', 3000)
     homePage
         .click('@homepageLogin')
@@ -57,11 +55,13 @@ let loginValid = (browser) => {
  * Log out of an account.
  * @param {object} browser the Nightwatch object
  */
-let logOut = browser => {
+let logOut = (browser) => {
     let homePage = browser.page.homePage();
     homePage
+        .waitForElementVisible('@homepageLogin', 5000)
+    homePage
         .click('@homepageLogin')
-        .waitForElementVisible('@logOutButton', 2000)
+        .waitForElementVisible('@logOutButton', 15000)
     homePage
         .click('@logOutButton')
         .waitForElementVisible('@homepageLogin', 2000)

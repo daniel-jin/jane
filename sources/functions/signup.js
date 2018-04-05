@@ -19,7 +19,6 @@ let setInputValue = (page, element, data) => {
  */
 let signUpValid = (browser) => {
     let homePage = browser.page.homePage();
-    homePage.navigate()
     homePage.waitForElementVisible('@homepageLogin', 3000)
     homePage
         .click('@homepageLogin')
@@ -40,7 +39,6 @@ let signUpValid = (browser) => {
 
 let signUpInvalid = (browser) => {
     let homePage = browser.page.homePage();
-    homePage.navigate()
     homePage.waitForElementVisible('@homepageLogin', 3000)
     homePage
         .click('@homepageLogin')
