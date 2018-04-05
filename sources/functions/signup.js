@@ -1,5 +1,5 @@
-const selectors = require('./selectors')
-const data = require('./data')
+const selectors = require('../selectors')
+const data = require('../data')
 
 /**
  * Clears an input field, sets an assigned value, and verifies the value.

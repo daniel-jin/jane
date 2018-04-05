@@ -1,6 +1,4 @@
-const selectors = require('../sources/selectors')
-const functions = require('../sources/functions')
-const data = require('../sources/data')
+const functions = require('../sources/functions/signup')
 
 module.exports = {
     beforeEach: browser => {

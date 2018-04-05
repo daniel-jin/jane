@@ -7,5 +7,6 @@ module.exports = {
         'passwordInput': 'input[type="password"]',
         'signUpButton': 'button[class="button__ButtonContent-eBlwbH ccLrVt"]',
         'errorBox': 'span[class="text__Text-iEUpza hvHzTI"]',
+        'loginButton': 'button[class="button__ButtonContent-eBlwbH ccLrVt"]',
     },
 }
