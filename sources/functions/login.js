@@ -7,11 +7,11 @@ const data = require('../data')
  * @param {string} selector the selectors on the page
  * @param {string} data input data for the field
  */
-let setInputValue = (browser, selector, data) => {
-    browser
-        .clearValue(selector)
-        .setValue(selector, data)
-        .verify.value(selector, data)
+let setInputValue = (page, element, data) => {
+    page
+        .clearValue(element)
+        .setValue(element, data)
+        .verify.value(element, data)
 }
 
 /**
@@ -19,16 +19,18 @@ let setInputValue = (browser, selector, data) => {
  * @param {object} browser the Nightwatch object 
  */
 let loginInvalid = (browser) => {
-    browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
-    browser
-        .click(selectors["login/signup"].homepageLogin)
-        .waitForElementVisible(selectors["login/signup"].loginButton, 3000)
-    setInputValue(browser, selectors["login/signup"].emailInput, "")
-    setInputValue(browser, selectors["login/signup"].passwordInput, "")
-    browser
-        .click(selectors["login/signup"].loginButton)
-        .waitForElementVisible(selectors["login/signup"].loginError, 3000)
-    browser.expect.element(selectors["login/signup"].loginError).text.to.equal("The Email Address field is required.")
+    let homePage = browser.page.homePage();
+    homePage.navigate()
+    homePage.waitForElementVisible('@homepageLogin', 3000)
+    homePage
+        .click('@homepageLogin')
+        .waitForElementVisible('@loginButton', 3000)
+    setInputValue(homePage, '@emailInput', "")
+    setInputValue(homePage, '@passwordInput', "")
+    homePage
+        .click('@loginButton')
+        .waitForElementVisible('@loginError', 3000)
+    homePage.expect.element('@loginError').text.to.equal("The Email Address field is required.")
 }
 
 /**
