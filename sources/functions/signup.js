@@ -1,17 +1,16 @@
-const selectors = require('../selectors')
 const data = require('../data')
 
 /**
  * Clears an input field, sets an assigned value, and verifies the value.
- * @param {object} browser the Nightwatch testing object
- * @param {string} selector the selectors on the page
+ * @param {object} page the homepage
+ * @param {string} element the element to input value into
  * @param {string} data input data for the field
  */
-let setInputValue = (browser, selector, data) => {
-    browser
-        .clearValue(selector)
-        .setValue(selector, data)
-        .verify.value(selector, data)
+let setInputValue = (page, element, data) => {
+    page
+        .clearValue(element)
+        .setValue(element, data)
+        .verify.value(element, data)
 }
 
 /**
@@ -19,39 +18,43 @@ let setInputValue = (browser, selector, data) => {
  * @param {object} browser the Nightwatch object
  */
 let signUpValid = (browser) => {
-    browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
-    browser
-        .click(selectors["login/signup"].homepageLogin)
-        .waitForElementVisible(selectors["login/signup"].signupLink, 3000)
-    browser
-        .click(selectors["login/signup"].signupLink)
-        .waitForElementVisible(selectors["login/signup"].signUpButton, 3000)
-    setInputValue(browser, selectors["login/signup"].nameInput, data.signUp.fullName)
-    setInputValue(browser, selectors["login/signup"].emailInput, data.signUp.email)
-    setInputValue(browser, selectors["login/signup"].passwordInput, data.signUp.password)
-    browser
-        .click(selectors["login/signup"].signUpButton)
-        .waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
+    let homePage = browser.page.homePage();
+    homePage.navigate()
+    homePage.waitForElementVisible('@homepageLogin', 3000)
+    homePage
+        .click('@homepageLogin')
+        .waitForElementVisible('@signupLink', 3000)
+    homePage
+        .click('@signupLink')
+        .waitForElementVisible('@signUpButton', 3000)
+    setInputValue(homePage, '@nameInput', data.signUp.fullName)
+    setInputValue(homePage, '@emailInput', data.signUp.email)
+    setInputValue(homePage, '@passwordInput', data.signUp.password)
+    homePage
+        .click('@signUpButton')
+        .waitForElementVisible('@homepageLogin', 3000)
     browser.pause(3000)
-    browser
-        .expect.element(selectors["login/signup"].homepageLogin).text.to.equal("Dan")
+    homePage
+        .expect.element('@homepageLogin').text.to.equal("Dan")
 }
 
 let signUpInvalid = (browser) => {
-    browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
-    browser
-        .click(selectors["login/signup"].homepageLogin)
-        .waitForElementVisible(selectors["login/signup"].signupLink, 3000)
-    browser
-        .click(selectors["login/signup"].signupLink)
-        .waitForElementVisible(selectors["login/signup"].signUpButton, 3000)
-    setInputValue(browser, selectors["login/signup"].nameInput, "")
-    setInputValue(browser, selectors["login/signup"].emailInput, "")
-    setInputValue(browser, selectors["login/signup"].passwordInput, "")
-    browser
-        .click(selectors["login/signup"].signUpButton)
-        .waitForElementVisible(selectors["login/signup"].errorBox, 3000)
-    browser.expect.element(selectors["login/signup"].errorBox).text.to.equal("The Full Name field is required.")
+    let homePage = browser.page.homePage();
+    homePage.navigate()
+    homePage.waitForElementVisible('@homepageLogin', 3000)
+    homePage
+        .click('@homepageLogin')
+        .waitForElementVisible('@signupLink', 3000)
+    homePage
+        .click('@signupLink')
+        .waitForElementVisible('@signUpButton', 3000)
+    setInputValue(homePage, '@nameInput', "")
+    setInputValue(homePage, '@emailInput', "")
+    setInputValue(homePage, '@passwordInput', "")
+    homePage
+        .click('@signUpButton')
+        .waitForElementVisible('@errorBox', 3000)
+    homePage.expect.element('@errorBox').text.to.equal("The Full Name field is required.")
 }
 
 module.exports = {
