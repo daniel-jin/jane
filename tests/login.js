@@ -8,7 +8,7 @@ module.exports = {
     after: browser => {
         browser.end()
     },
+    'DCS-12: Log out': browser => functions.logOut(browser),
     'DCS-11: Login (invalid inputs)': browser => functions.loginInvalid(browser),
     'DCS-10: Login (valid inputs)': browser => functions.loginValid(browser),
-    'DCS-12: Log out': browser => functions.logOut(browser),
 }

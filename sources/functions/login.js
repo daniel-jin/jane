@@ -22,7 +22,16 @@ let loginValid = (browser) => {
     browser.waitForElementVisible(selectors["login/signup"].homepageLogin, 3000)
     browser
         .click(selectors["login/signup"].homepageLogin)
-        .waitForElementVisible(selectors["login/signup"].signupLink, 3000)
+
+    // // If already logged in, log out first
+    // brower.element('css selector', selectors["login/signup"].homepageLogin, function(result){
+
+    //     if(result.text === "Dan") {
+    //         browser.click()
+    //     }
+    // })
+
+    browser.waitForElementVisible(selectors["login/signup"].signupLink, 3000)
     setInputValue(browser, selectors["login/signup"].emailInput, data.signUp.email)
     setInputValue(browser, selectors["login/signup"].passwordInput, data.signUp.password)
     browser
@@ -62,6 +71,7 @@ let logOut = browser => {
     browser
         .click(selectors["login/signup"].logOutButton)
         .waitForElementVisible(selectors["login/signup"].homepageLogin, 2000)
+    browser.pause(2000)
     browser.expect.element(selectors["login/signup"].homepageLogin).text.to.equal("Login")
 }
 
