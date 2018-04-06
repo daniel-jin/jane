@@ -19,18 +19,16 @@ let setInputValue = (page, element, data) => {
  */
 let favoriteFromHomepage = (browser) => {
     let homePage = browser.page.homePage();
-    homePage.waitForElementVisible('@homepageLogin', 3000)
+    let favoritesPage = browser.page.favoritesPage();
+
+    homePage.waitForElementVisible('@firstDeal', 5000)
     homePage
-        .click('@homepageLogin')
-        .waitForElementVisible('@loginButton', 3000)
-    setInputValue(homePage, '@emailInput', "")
-    setInputValue(homePage, '@passwordInput', "")
-    homePage
-        .click('@loginButton')
-        .waitForElementVisible('@loginError', 3000)
-    homePage.expect.element('@loginError').text.to.equal("The Email Address field is required.")
+        .click('@firstDealFavoriteButton')
+        .click('@favoritesButton')
+    favoritesPage.waitForElementVisible('@myFavsHeader', 5000)
+    favoritesPage.waitForElementVisible('@favItem', 5000)
 }
 
 module.exports = {
-    
+    favoriteFromHomepage: favoriteFromHomepage,
 }

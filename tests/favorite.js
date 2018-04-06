@@ -8,5 +8,5 @@ module.exports = {
     after: browser => {
         browser.end()
     },
-    'DCS-7 : Favoriting items' : browser => functions.
+    //'DCS-7 : Favoriting items' : browser => functions.
 }

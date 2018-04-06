@@ -12,8 +12,13 @@ module.exports = {
         loginButton: 'button[class="button__ButtonContent-eBlwbH ccLrVt"]',
         loginError: 'span[class="text__Text-iEUpza hvHzTI"]',
         logOutButton: 'span[data-testid="accountnav-log-out"]',
+        favoritesButton: 'i[data-testid="favorites-btn"]',
         firstDeal: {
             selector: '(//div[@class="deal-summaries__ResponsiveDeal-diWryY pDknW deal__DealCard-fQxFXT cslyYA box__Box-dJaANZ eRdFJs"])[1]',
+            locateStrategy: 'xpath'
+        },
+        firstDealFavoriteButton: {
+            selector: '(//div[@class="deal-summaries__ResponsiveDeal-diWryY pDknW deal__DealCard-fQxFXT cslyYA box__Box-dJaANZ eRdFJs"])[1]/button[2]',
             locateStrategy: 'xpath'
         },
     }
