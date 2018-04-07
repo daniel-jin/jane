@@ -5,6 +5,7 @@ module.exports = {
         'password': "11111111"
     },
     'login': {
-        
+
     },
+    enterKey: "\uE007",
 }
