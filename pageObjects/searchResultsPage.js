@@ -3,7 +3,7 @@ module.exports = {
 
     elements: {
         firstDeal: {
-            selector: '(//div[@class="deal-summaries__ResponsiveDeal-diWryY fAxvSD deal__DealCard-fQxFXT cslyYA box__Box-dJaANZ eRdFJs""])[1]',
+            selector: '(//div[@class="deal-summaries__ResponsiveDeal-diWryY fAxvSD deal__DealCard-fQxFXT cslyYA box__Box-dJaANZ eRdFJs"])[1]',
             locateStrategy: 'xpath'
         },
     }

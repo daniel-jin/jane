@@ -21,28 +21,27 @@ let addToCart = (browser) => {
     let homePage = browser.page.homePage();
     let cartPage = browser.page.cart();
     let itemDetailPage = browser.page.itemDetailPage();
+    let searchResultsPage = browser.page.searchResultsPage();
 
     // Search for "sandals"
     homePage.waitForElementVisible('@searchBar', 5000)
     homePage.click('@searchBar')
     setInputValue(homePage, '@searchBar', "sandals")
     browser.keys(data.enterKey)
-    browser.pause(15000)
 
-    // browser.element('css selector', 'button[type="submit"]', function(result){
-    //     console.log(result)
-    //     if(result.status != -1){
-    //         //Element exists, do something
-    //         browser.click('select[name="SIZE"]')
-    //         browser.pause(10000)
-    //     } else{
-    //         //Element does not exist, do something else
-    //     }
-    // });
+    // Choose a deal, add the item to cart
+    searchResultsPage.waitForElementVisible('@firstDeal', 5000)
+    searchResultsPage
+        .click('@firstDeal')
+    browser.waitForElementVisible('button[type="submit"]', 5000)
+    browser.element('css selector', 'select[name="Size"]', function(result){
+        console.log(result)
+        if(result.status != -1){
+            browser.click('select[name="Size"]')
+        }
+    });
 
-    //itemDetailPage.click('@addToBagButton')
-    //browser.pause(10000)
-
+    itemDetailPage.click('@addToBagButton')
 }
 
 module.exports = {
