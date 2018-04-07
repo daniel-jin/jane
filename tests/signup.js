@@ -9,5 +9,5 @@ module.exports = {
         browser.end()
     },
     //'DCS-8: Signup (valid inputs)': browser => functions.signUpValid(browser),
-    'DCS-9: Signup (invalid inputs)': browser => functions.signUpInvalid(browser)
+    //'DCS-9: Signup (invalid inputs)': browser => functions.signUpInvalid(browser)
 }
