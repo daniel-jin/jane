@@ -35,9 +35,17 @@ let addToCart = (browser) => {
         .click('@firstDeal')
     browser.waitForElementVisible('button[type="submit"]', 5000)
     browser.element('css selector', 'select[name="Size"]', function(result){
-        console.log(result)
         if(result.status != -1){
             browser.click('select[name="Size"]')
+            .useXpath()
+            .waitForElementVisible('//select[@name="Size"]/option[2]', 2000)
+            browser.click('//select[@name="Size"]/option[2]')
+            .useCss()
+            browser.click('select[name="Color"]')
+            .useXpath()
+            .waitForElementVisible('//select[@name="Color"]/option[2]', 2000)
+            browser.click('//select[@name="Color"]/option[2]')
+            .useCss()
         }
     });
 
