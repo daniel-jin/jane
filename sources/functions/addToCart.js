@@ -17,8 +17,10 @@ let setInputValue = (page, element, data) => {
  * Login with invalid inputs.
  * @param {object} browser the Nightwatch object 
  */
-let loginInvalid = (browser) => {
+let addToCart = (browser) => {
     let homePage = browser.page.homePage();
+    let 
+    
     homePage.waitForElementVisible('@homepageLogin', 3000)
     homePage
         .click('@homepageLogin')
