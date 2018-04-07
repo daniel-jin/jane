@@ -19,9 +19,9 @@ let setInputValue = (page, element, data) => {
  */
 let favoriteFromHomepage = (browser) => {
     let homePage = browser.page.homePage();
-    let favoritesPage = browser.page.favoritesPage();
+    let favoritesPage = browser.page.favorites();
 
-    homePage.waitForElementVisible('@firstDeal', 5000)
+    homePage.waitForElementVisible('@firstDealFavoriteButton', 5000)
     homePage
         .click('@firstDealFavoriteButton')
         .click('@favoritesButton')

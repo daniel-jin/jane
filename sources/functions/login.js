@@ -46,7 +46,7 @@ let loginValid = (browser) => {
     homePage
         .click('@loginButton')
         .waitForElementVisible('@homepageLogin', 3000)
-    browser.pause(3000)
+    browser.pause(5000)
     homePage
         .expect.element('@homepageLogin').text.to.equal("Dan")
 }

@@ -18,7 +18,7 @@ module.exports = {
             locateStrategy: 'xpath'
         },
         firstDealFavoriteButton: {
-            selector: '(//div[@class="deal-summaries__ResponsiveDeal-diWryY pDknW deal__DealCard-fQxFXT cslyYA box__Box-dJaANZ eRdFJs"])[1]/button[2]',
+            selector: '(//div[@class="deal-summaries__ResponsiveDeal-diWryY pDknW deal__DealCard-fQxFXT cslyYA box__Box-dJaANZ eRdFJs"])[1]//button[2]',
             locateStrategy: 'xpath'
         },
     }
