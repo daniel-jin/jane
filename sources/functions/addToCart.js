@@ -7,11 +7,12 @@ const data = require('../data')
 let addToCart = (browser) => {
     let homePage = browser.page.homePage();
     let cartPage = browser.page.cartPage();
+    let itemDetailPage = browser.page.itemDetailPage();
 
     homePage.waitForElementVisible('@firstDeal', 5000)
     homePage
         .click('@firstDeal')
-
+    itemDetailPage.waitForElementVisible()
 }
 
 module.exports = {
