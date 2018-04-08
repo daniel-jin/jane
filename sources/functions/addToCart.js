@@ -41,6 +41,10 @@ let addToCart = (browser) => {
             .waitForElementVisible('//select[@name="Size"]/option[2]', 2000)
             browser.click('//select[@name="Size"]/option[2]')
             .useCss()
+        }
+    });
+    browser.element('css selector', 'select[name="Color"]', function(result){
+        if(result.status != -1){
             browser.click('select[name="Color"]')
             .useXpath()
             .waitForElementVisible('//select[@name="Color"]/option[2]', 2000)
@@ -48,8 +52,12 @@ let addToCart = (browser) => {
             .useCss()
         }
     });
-
     itemDetailPage.click('@addToBagButton')
+
+    // Go to cart page and confirm the item is there
+    browser.click('a[data-testid="cart-menu"]')
+    cartPage.waitForElementVisible('@firstItem', 5000)
+    
 }
 
 module.exports = {

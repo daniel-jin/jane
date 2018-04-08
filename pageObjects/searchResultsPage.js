@@ -6,5 +6,6 @@ module.exports = {
             selector: '(//div[@class="deal-summaries__ResponsiveDeal-diWryY fAxvSD deal__DealCard-fQxFXT cslyYA box__Box-dJaANZ eRdFJs"])[1]',
             locateStrategy: 'xpath'
         },
+        cart: 'a[data-testid="cart-menu"]',
     }
 }
