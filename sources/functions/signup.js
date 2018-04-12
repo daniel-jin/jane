@@ -35,6 +35,7 @@ let signUpValid = (browser) => {
     browser.pause(3000)
     homePage
         .expect.element('@homepageLogin').text.to.equal("Dan")
+    browser.end()
 }
 
 let signUpInvalid = (browser) => {

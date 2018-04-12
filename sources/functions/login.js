@@ -9,6 +9,7 @@ const data = require('../data')
 let setInputValue = (page, element, data) => {
     page
         .clearValue(element)
+        .verify.value(element, "")
         .setValue(element, data)
         .verify.value(element, data)
 }
